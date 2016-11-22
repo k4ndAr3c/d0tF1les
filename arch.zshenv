@@ -185,7 +185,7 @@ alias SKR='ssh-keygen -f "/root/.ssh/known_hosts" -R'
 alias lrt='ls -rtl'
 function GACP { git add --all && git commit -a -m $1 && git push -u origin $2 ; }
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
-alias VIdz="egrep '(mp4|webm|flv)'"
+alias VIdz="egrep '(mp4|webm|flv|mkv|avi)'"
 alias W="nmcli d wifi list"
 function live-clean { for i in {1..$1} ; do nmcli c delete "$2 $i" ; done ; }
 alias KillJob='kill -9 `jobs -l |awk "{print $3}"`'
