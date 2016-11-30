@@ -190,3 +190,4 @@ alias W="nmcli d wifi list"
 function live-clean { for i in {1..$1} ; do nmcli c delete "$2 $i" ; done ; }
 alias KillJob='kill -9 `jobs -l |awk "{print $3}"`'
 alias K9='kill -9'
+function ReVerse { python -c "print ''.join(reversed(\"$1\"))" ; }
