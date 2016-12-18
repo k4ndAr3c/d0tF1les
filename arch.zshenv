@@ -191,3 +191,8 @@ function live-clean { for i in {1..$1} ; do nmcli c delete "$2 $i" ; done ; }
 alias KillJob='kill -9 `jobs -l |awk "{print $3}"`'
 alias K9='kill -9'
 function ReVerse { python -c "print ''.join(reversed(\"$1\"))" ; }
+function nmapSearchX { nmap -sV -oX /tmp/n.xml $1 ; searchsploit --nmap /tmp/n.xml ; }
+alias MyIp="curl ifconfig.me/ip"
+alias t='time'
+alias findSUID='find / -user root -perm -4000 -print'
+alias updateSite='wget -r -l inf -nc '
