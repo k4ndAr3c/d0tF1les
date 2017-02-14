@@ -57,6 +57,7 @@ alias b='cd /opt/backbox/ ; clear_console'
 alias bugtraq="/usr/bin/sshXKey 10.42.1.27"
 alias bugtraq="/usr/bin/sshXKey root@10.42.1.27"
 alias C1='sed "s/^./\u&/"'
+alias CAM3="vlc -I dummy -v --noaudio --ttl 12 v4l2:///dev/video0 --sout '#std{access=mmsh,dst=:1234}' -V X11"
 alias CAM='vlc -v --noaudio v4l2:///dev/video0 --sout "#transcode{vcodec=mp4v,vb=128}:std{access=mmsh,dst=:1234}"'
 alias CAnAl+="youtube-dl 'http://www.canalplus.fr/c-emissions/c-le-petit-journal/pid6515-le-petit-journal.html'"
 alias CAPItalize="sed 's/.*/\U&/'"   #awk '{print toupper($0)}'
@@ -64,7 +65,6 @@ alias ccat='pygmentize -O bg=dark'
 alias ..='cd ..'
 alias c='dnf list installed | grep -i'
 alias c='dpkg -l | grep -i'
-alias c='equery list'
 alias CGits="cd /EXT4/GITs"
 alias chromium-browser='chromium-browser --user-data-dir=/root/.chromium-browser'
 alias cl='clear_console ; ls -hFl'
@@ -77,6 +77,7 @@ alias CLEAN='eclean-dist -d ; eclean-pkg -d ; bleachbit -c --preset'
 alias CLEAN='pacman -Scc; bleachbit -c --preset'
 alias c='pacman -Qs'
 alias cp='cp -v'
+alias c='qlist -I'
 alias D3F7="/usr/bin/sshXKey 10.42.1.31"
 alias DCA='dpkg --configure -a'
 alias d='cd /DwS/Downloads ; clear'
@@ -96,6 +97,8 @@ alias du='du -h'
 alias e='cd /DATAS/ ; clear_console'
 alias E='exit'
 alias egrep='egrep --color=auto'
+alias EPR='time emerge @preserved-rebuild'
+alias eq="equery"
 alias f3doR="/usr/bin/sshXKey 10.42.1.18"
 alias f3doR="/usr/bin/sshXKey root@10.42.1.18"
 alias fact='elinks -dump randomfunfacts.com | sed -n '\''/^| /p'\'' | tr -d \|'
@@ -106,6 +109,7 @@ alias f='cd /ntfsFILES/ ; clear'
 alias fgrep='fgrep --color=auto'
 alias FInd='find / -iname'
 alias findSUID='find / -user root -perm -4000 -print'
+alias fortuneCow="/usr/games/fortune | /usr/games/cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)"
 alias fortune="/usr/games/fortune"
 alias fr33bsd="/usr/bin/sshXKey 10.42.1.31"
 alias free='free -h'
@@ -117,6 +121,7 @@ alias FULLnmap='nmap --reason -A -sC -sS '
 alias -g BT='--backtrack=200'
 alias GC='git clone'
 alias GenKernel="genkernel --no-clean --luks --gpg all"
+alias getIp="python3 -c 'import socket;s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM);s.connect((\"10.42.1.5\",80));print(s.getsockname()[0]);s.close()'"
 alias -g G="|grep --color=auto"
 alias g='grep --color=auto'
 alias -g H='--help'
@@ -124,6 +129,7 @@ alias -g KG='--keep-going'
 alias GP='git pull'
 alias grep='grep --color=auto'
 alias GROLAND="youtube-dl 'http://www.canalplus.fr/c-humour/pid1787-c-groland.html'"
+alias -g triPkgList="cut -d'(' -f2|rmVer|sort -u|uniq"
 alias GUIGNOLS="youtube-dl 'http://www.canalplus.fr/c-humour/pid1784-c-les-guignols.html'"
 alias H='cat /root/.zsh_history | grep -i '
 alias h='cd /home/k4ndar3c/ ; clear'
@@ -198,7 +204,7 @@ alias nSTool="/usr/bin/sshXKey 10.42.1.34"
 alias nt='arp-scan -l -I'
 alias NT='arp-scan -l -I $(ifconfig |grep "flag" |grep -v "lo" |cut -f1 -d":")'
 alias NT='arp-scan -l -I $(ifconfig |grep flag|grep -v lo |cut -f1 -d":")'
-alias NTNames="arp-scan -l |sed 's/www.nta-monitor.com\/tools\/arp-scan\/)/\n/g' | sed 's/10.42.1.10\t/jaR0\t/g' | sed 's/10.42.1.100\t/RT\t/g' | sed 's/10.42.1.11\t/Landar0x\t/g' | sed 's/10.42.1.12\t/Knoppix\t/g' | sed 's/10.42.1.13\t/m4k\t/g' | sed 's/10.42.1.14\t/muS1x\t/g' | sed 's/10.42.1.15\t/linux-q5vi\t/g' | sed 's/10.42.1.16\t/R3d\t/g' | sed 's/10.42.1.17\t/xXx\t/g' | sed 's/10.42.1.18\t/f3dor\t/g' | sed 's/10.42.1.19\t/Matriux\t/g' | sed 's/10.42.1.20\t/BOX\t/g' | sed 's/10.42.1.21\t/tru30s\t/g' | sed 's/10.42.1.22\t/Spike\t/g' | sed 's/10.42.1.23\t/wifislax\t/g' | sed 's/10.42.1.25\t/w1ns3rv\t/g' | sed 's/10.42.1.27\t/bugtraq\t/g' | sed 's/10.42.1.28\t/n3th\t/g' | sed 's/10.42.1.29\t/pentoo\t/g' | sed 's/10.42.1.30\t/BOX\t/g' | sed 's/10.42.1.33\t/Ka0s\t/g' | sed 's/10.42.1.34\t/nSTool\t/g' | sed 's/10.42.1.31\t/fr33bsd\t/g' | sed 's/10.42.1.26\t/srv8e\t/g' | sed 's/10.42.1.24\t/LiGhT\t/g' | sed 's/10.42.1.32\t/parrot\t/g'| sed 's/10.42.1.35\t/minino\t/g'"
+alias NTNames="arp-scan -l |sed 's/www.nta-monitor.com\/tools\/arp-scan\/)/\n/g' | sed 's/10.42.1.10\t/jaR0\t/g' | sed 's/10.42.1.100\t/RT\t/g' | sed 's/10.42.1.11\t/Landar0x\t/g' | sed 's/10.42.1.12\t/Knoppix\t/g' | sed 's/10.42.1.13\t/m4k\t/g' | sed 's/10.42.1.14\t/muS1x\t/g' | sed 's/10.42.1.15\t/q5vi\t/g' | sed 's/10.42.1.16\t/R3d\t/g' | sed 's/10.42.1.17\t/xXx\t/g' | sed 's/10.42.1.18\t/f3dor\t/g' | sed 's/10.42.1.19\t/Matriux\t/g' | sed 's/10.42.1.20\t/BOX\t/g' | sed 's/10.42.1.21\t/tru30s\t/g' | sed 's/10.42.1.22\t/Spike\t/g' | sed 's/10.42.1.23\t/wifislax\t/g' | sed 's/10.42.1.25\t/w1ns3rv\t/g' | sed 's/10.42.1.27\t/bugtraq\t/g' | sed 's/10.42.1.28\t/n3th\t/g' | sed 's/10.42.1.29\t/pentoo\t/g' | sed 's/10.42.1.30\t/BOX\t/g' | sed 's/10.42.1.33\t/Ka0s\t/g' | sed 's/10.42.1.34\t/nSTool\t/g' | sed 's/10.42.1.31\t/fr33bsd\t/g' | sed 's/10.42.1.26\t/srv8e\t/g' | sed 's/10.42.1.24\t/LiGhT\t/g' | sed 's/10.42.1.32\t/parrot\t/g'| sed 's/10.42.1.35\t/minino\t/g'| sed 's/10.42.1.37\t/p3nt00\t/g'"
 alias NT='/usr/bin/arp-scan -l -I $(ifconfig | grep -B1 "inet"|grep -i ether|cut -f1 -d" ")'
 alias NW='ifconfig | grep Bcast | cut -d '\'':'\'' -f2 | cut -d '\'' '\'' -f1 | cut -d . -f 1,2,3 | sed -e '\''s/$/.0\/24/'\'''
 alias OFF='shutdown -h -P now'
@@ -254,6 +260,7 @@ alias ssFAll="threadedSSH-paramiko.py StopServices;StopServices;clear"
 alias sshXKEY="ssh -X -i /home/k4ndar3c/KEY"
 alias STuff='mount.nfs -v 10.42.1.12:/STuff /mnt/STuff'
 alias SV='svn update'
+alias TailEmergeLog='sudo tail -f /var/log/emerge-fetch.log'
 alias thad0ctor='cd /root/thadOctor/ && bash LAUNCH_TOOLKIT.sh'
 alias T=sensors
 alias t='time'
@@ -266,6 +273,8 @@ alias UpdateZPrezto="cd /root/.zprezto && git pull && git submodule update --ini
 alias UPmon0='airmon-ng start wlan1'
 alias up='pacman -Syu'
 alias upSys="time emerge -u1Dva --autounmask @system"
+alias urldecode='node -e "console.log(decodeURIComponent(process.argv[1]))"'
+alias urlencode='node -e "console.log(encodeURIComponent(process.argv[1]))"'
 alias US="gtrans.py -d us"
 alias VA="vim /etc/portage/package.accept_keywords"
 alias v='cd /srv/http ; clear ; ls -ahl'
@@ -275,7 +284,9 @@ alias VIdz="egrep '(mp4|webm|flv|mkv|avi)'"
 alias VM="vim /etc/portage/package.mask"
 alias VpnHome='pptpsetup --create HOME --server 10.42.0.26 --username k4ndar3c --encrypt mppe --start && route add -net 10.42.1.0 netmask 255.255.255.0 gateway 10.42.1.100'
 alias VU="vim /etc/portage/package.use"
+alias VW="vim /var/lib/portage/world"
 alias WEBsecurify="cd /EXT4/SVNs/websecurify-read-only && ./xulrunner9.0/xulrunner --app ./xulrunner/websecurify/applications/scanner/application.ini &"
+alias whichSong="ssh root@10.42.1.19 lsof -c vlc|grep Z1C|cut -d '/' -f4,5,6,7,8,9,10,11,12,13,14"
 alias WLAN0scan="iw wlan0 scan |egrep -ie '(SSID|signal)'"
 alias WLAN1scan="iw wlan1 scan |egrep -ie '(SSID|signal)'"
 alias WLAN2scan="iw wlan2 scan |egrep -ie '(SSID|signal)'"
@@ -292,6 +303,7 @@ alias z90='date ; shutdown -h -P +90'
 function Append0-9 { for i in $(cat $1) ; do seq -f $i%1.0f 0 9 ; done ; }
 function CHROOT { mount $1 $2 ; mount -t proc /proc $2/proc ; mount -t sysfs /sys $2/sys ; mount -B /dev $2/dev ; mount -B /dev/pts $2/dev/pts ; chroot $2 ; }
 function GACP { git add --all && git commit -a -m $1 && git push -u origin $2 ; }
+function GMD5 { egrep $1 /pentest/PeNtEsT/pentestscr1pts/w0Rdl1stS/MD5s-resolv.lst ; }
 function live-clean { for i in {1..$1} ; do nmcli c delete "$2 $i" ; done ; }
 function LookAtGit { elinks "https://github.com/$1?tab=repositories" ; }
 function MAC { for i in $(ifconfig -a|grep flag|grep -v lo |cut -f1 -d":") ; do echo ; echo $i ; macchanger -s $i ; done ; }
@@ -301,21 +313,13 @@ function nmapSearchX { nmap -sV -oX /tmp/n.xml $1 ; searchsploit --nmap /tmp/n.x
 function NP { netstat -anp | grep -i $1 ; ss -anp | grep -i $1 ; lsof -i -P | grep -i $1 ; }
 function PdfDim { gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$1 $2 ; }
 function Qf { find . -iname "*$1*" ; }
+function Q { for i in premiere deuxieme ; do youtube-dl -f http-705 http://www.tf1.fr/tmc/quotidien-avec-yann-barthes/videos/quotidien-$i-partie-$1-$2-2017.html || youtube-dl -f http-704 http://www.tf1.fr/tmc/quotidien-avec-yann-barthes/videos/quotidien-$i-partie-$1-$2-2017.html ; done ; }
 function RedirPort { iptables -t nat -A PREROUTING -i $3 -p tcp --dport $1 -j REDIRECT --to-port $2 ; }
 function ReVerse { python3 -c "print(''.join(reversed(\"$1\")))" ; }
 function ReVerse { python -c "print(''.join(reversed(\"$1\")))" ; }
 function scpKEY { scp -i /home/k4ndar3c/KEY $1 $2 ; }
+function showPkgsConfig { for i in `ls /etc/portage/package*` ; do echo -e '\n'$i'#######' ; cat $i ; done ; }
 function SshForAll { for i in $(arp-scan -l |grep 10\.42|grep -v \.100 |cut -f 1) ;do echo $i ; ssh $i $* ; echo '\n';done ;ssh 10.42.0.1 $* }
 function SshForAll { for i in $(/usr/bin/arp-scan -l |grep 10\.42|grep -v \.100 |cut -f 1) ;do echo $i ; ssh $i $* ; echo '\n';done ;ssh 10.42.0.1 $* ; }
 function WHILe { while sleep $1 ; do $2 $3 $4 $5 $6 $7 $8 $9 ; done ; }
 function WHO { ripdc.sh -t $1 ; echo "-----------------" ; nslookup $1 208.67.222.222 ; echo "-----------------" ; dig -t ANY $1 ; echo "-----------------" ; host -a $1 8.8.8.8 ; echo "-----------------" ; dmitry $1 ; }
-alias -g triPkgList="cut -d'(' -f2|rmVer|sort -u|uniq"
-alias TailEmergeLog='sudo tail -f /var/log/emerge-fetch.log'
-alias eq="equery"
-alias urldecode='node -e "console.log(decodeURIComponent(process.argv[1]))"'
-alias urlencode='node -e "console.log(encodeURIComponent(process.argv[1]))"'
-alias EPR='time emerge @preserved-rebuild'
-function GMD5 { egrep $1 /pentest/PeNtEsT/pentestscr1pts/w0Rdl1stS/MD5s-resolv.lst ; }
-function Q { for i in premiere deuxieme ; do youtube-dl -f http-705 http://www.tf1.fr/tmc/quotidien-avec-yann-barthes/videos/quotidien-$i-partie-$1-$2-2017.html || youtube-dl -f http-704 http://www.tf1.fr/tmc/quotidien-avec-yann-barthes/videos/quotidien-$i-partie-$1-$2-2017.html ; done ; }
-alias VW="vim /var/lib/portage/world"
-function showPkgsConfig { for i in `ls /etc/portage/package*` ; do echo -e '\n'$i'#######' ; cat $i ; done ; }
