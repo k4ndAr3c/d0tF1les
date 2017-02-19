@@ -97,7 +97,7 @@ alias du='du -h'
 alias e='cd /DATAS/ ; clear_console'
 alias E='exit'
 alias egrep='egrep --color=auto'
-alias EPR='time emerge @preserved-rebuild'
+alias EPR='time emerge --ignore-default-opts --keep-going -v @preserved-rebuild'
 alias eq="equery"
 alias f3doR="/usr/bin/sshXKey 10.42.1.18"
 alias f3doR="/usr/bin/sshXKey root@10.42.1.18"
@@ -214,6 +214,8 @@ alias p2s='systemctl stop postgresql'
 alias p2='systemctl start postgresql'
 alias pentoo="/usr/bin/sshXKey 10.42.1.29"
 alias pentoo="/usr/bin/sshXKey root@10.42.1.29"
+alias penUp2='time emerge --color y -uDNpv --alphabetical --with-bdeps y @system @world'
+alias penUp='agSmooth portage ; time emerge --deep --update --newuse -kb --changed-use --newrepo @world'
 alias PipUpgradeAll="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 alias poogle='ping google.com -c 5 ; ping google.fr -c 5'
 alias p='ps faux|grep -v grep|grep -i'
@@ -274,7 +276,9 @@ alias UPmon0='airmon-ng start wlan1'
 alias up='pacman -Syu'
 alias upSys="time emerge -u1Dva --autounmask @system"
 alias urldecode='node -e "console.log(decodeURIComponent(process.argv[1]))"'
+alias urldecodepy='python3 -c "import sys, urllib.parse as up; print(up.unquote_plus(sys.argv[1]))"'
 alias urlencode='node -e "console.log(encodeURIComponent(process.argv[1]))"'
+alias urlencodepy='python3 -c "import sys, urllib.parse as up; print(up.quote_plus(sys.argv[1]))"'
 alias US="gtrans.py -d us"
 alias VA="vim /etc/portage/package.accept_keywords"
 alias v='cd /srv/http ; clear ; ls -ahl'

@@ -1,0 +1,32 @@
+Function cl { Clear-Host ; Get-ChildItem }
+Function NT { nmap -sn 10.42.1.0/24 }
+Function adg { choco upgrade -y chocolatey ; choco upgrade -y all }
+Function updateGits { Get-ChildItem -Directory | ForEach-Object {cd $_ ; git pull ; cd .. } }
+Function nop { notepad $profile }
+Function PYServer { 
+	param($port)
+	python -m SimpleHTTPServer $port }
+Function A { 
+	param($soft)
+	choco search $soft }
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+	Import-Module "$ChocolateyProfile" }
+Function wwwget {
+	param($url, $filename)
+	$client = new-object System.Net.WebClient
+	$client.DownloadFile( $url, $filename) }
+Function E { exit }
+Function dispy { 
+	param($ip)
+	C:\Python27\Scripts\dispynode.py --clean -i $ip }
+Function VLC { python D:\pEnTeSt\pythonscr1pts\VLC.py }
+Function speed { python C:\Users\k4ndar3c\networx.py }
+Function FR { 
+	param($word)
+	python D:\pEnTeSt\b1n\gtrans.py -d fr $word }
+Function rTmp { rm *~ }
+Function MyIp { Invoke-WebRequest http://my-ip.herokuapp.com }
+Function ccat {
+	param($file)
+	pygmentize $file }
