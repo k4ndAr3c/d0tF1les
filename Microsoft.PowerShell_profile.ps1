@@ -15,7 +15,7 @@ if (Test-Path($ChocolateyProfile)) {
 Function wwwget {
 	param($url, $filename)
 	$client = new-object System.Net.WebClient
-	$client.DownloadFile( $url, $filename) }
+	$client.DownloadFile($url, $filename) }
 Function E { exit }
 Function dispy { 
 	param($ip)
@@ -25,8 +25,16 @@ Function speed { python C:\Users\k4ndar3c\networx.py }
 Function FR { 
 	param($word)
 	python D:\pEnTeSt\b1n\gtrans.py -d fr $word }
-Function rTmp { rm *~ }
+Function rTmpVim { rm *~ }
 Function MyIp { Invoke-WebRequest http://my-ip.herokuapp.com }
 Function ccat {
 	param($file)
 	pygmentize $file }
+Function c {
+	param($soft)
+	choco list --local-only | findstr -i $soft }
+Function .. { cd .. }
+Function s { cd D:\PenteSt }
+Function CLEAN { 
+	D:\Liberkey\Apps\CCleaner\CCLeanerLKL.exe /auto
+	C:\"Program Files (x86)"\BleachBit\bleachbit_console.exe -c --preset }
