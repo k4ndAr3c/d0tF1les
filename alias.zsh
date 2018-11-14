@@ -88,7 +88,7 @@ alias df='df -hT --exclude-type=tmpfs'
 alias DFI='dpkg -i --force-overwrite '
 alias dla='du -sh $(ls -a) | sort -nr'
 alias dl='du -sh $(ls) | sort -nr'
-alias DL='ls -a| while read a ; do du -hs "$a" ;done| sort -nr'
+alias DL='ls -A| while read a ; do du -hs "$a" ;done| sort -nr'
 alias dnf="dnf --color=auto"
 alias DOWNmon0='airmon-ng stop mon0'
 alias du='du -h'
@@ -208,7 +208,9 @@ alias p2='systemctl start postgresql'
 alias pentoo="/usr/bin/sshXKey 10.42.1.29"
 alias pentoo="/usr/bin/sshXKey root@10.42.1.29"
 alias PipUpgradeAll="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
-alias poogle='ping google.com -c 5 ; ping google.fr -c 5'
+alias poogle4='ping -4 -c5 google.com ; ping -4 -c5 google.fr'
+alias poogle6='ping -6 -c5 google.com ; ping -6 -c5 google.fr'
+alias poogle='ping -4 -c5 google.com ; ping -6 -c5 google.com'
 alias p='ps faux|grep -v grep|grep -i'
 alias px4='proxychains4'
 alias px='proxychains'
@@ -345,6 +347,7 @@ alias decryptPubKey="openssl rsa -pubin -text -modulus -in"
 alias stealSshPass="strace -ff -p $(pidof sshd) -e read |& grep -F ', \"\f\0\0\0\'"
 function d64 { echo -n $1 |base64 -d ; echo ; }
 function u64dec { python2 -c "import base64; print int(base64.b64decode('$1').encode('hex'),16)" ; }
+function volFull { mkdir $PWD/FullDump ; for i in $(volatility --profile=$2 -h|awk '{print $1}') ; do volatility -f $1 --profile=$2 --output-file=$PWD/FullDump/$i.txt $i || volatility -f $1 --profile=$2 --output-file=$PWD/FullDump/$i.txt --dump-dir=$PWD/FullDump $i ; done ; }
 alias msieve='msieve -v'
 function makeShellCode { nb=0 ; for i in $(objdump -d $1|grep "^ "|cut -f2); do nb=$(($nb+1)) ; echo -n '\\x'$i ; done ; echo ; echo "len=$nb" ; }
 function nasm2ld { nasm -f elf64 -o $1.o $1.asm ; ld $1.o -o $1 -m elf_x86_64 ; }
@@ -355,3 +358,14 @@ function cC { for i in $(ls) ; do echo ; echo $i@@@@@@@ ; ccat $i || cat $i ; do
 alias YT="youtube-dl -f18 "
 alias Y="youtube-dl "
 function CleanWebPage { curl -s $1 | html2text ; }
+function upl04d { curl -X POST -F "fileToUp=@"$1 -F "submit=submit" http://www.clairemaindor.fr/myPers0w3bp4ge5/th1s-uplo4d/upp4g3.php && curl clairemaindor.fr/myPers0w3bp4ge5/th1s-uplo4d/upl04dl0g ; }
+alias ClWebPage="elinks -dump "
+function oneGadget { binsh=`strings -tx $1 | grep /bin/sh | cut -f2 -d ' '` ; echo "[+] binsh at "$binsh ; objdump -M intel -d $1 | grep execve -B5 | grep rdi -C3 | grep $binsh -C3 ; }
+function mITm { mitmf -i $1 --hsts --spoof --arp --jskeylogger --ferretng --gateway $2 ; }
+alias homeip="curl -s clairemaindor.fr/cons |tail -n1 |awk '{print \$2}'"
+function meteo { curl -s http://wttr.in/$1 ; }
+alias Pp="python2 -c 'print "
+function transfer { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi ; tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile ; echo ; rm -f $tmpfile; } 
+alias OBJ="objdump -d -Mintel "
+alias DimJpg="convert -define jpeg:extent=500Kb"
+alias Zapping="youtube-dl -f 18 https://www.youtube.com/channel/UCoRnHlbVByoYV6st5kPxOIQ/ --playlist-end=1"
