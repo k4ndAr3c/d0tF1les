@@ -1,0 +1,13 @@
+alias adg='pacman -Syyu'
+alias ag='pacman -Syu'
+alias aI='pacman --needed -S'
+alias a='pacman'
+alias apd='pacman -Syy'
+alias AS='pacman -Si'
+alias AURinstalled="pacman -Qqm"
+alias A='pacman -Ss'
+alias CLEAN='pacman -Scc; bleachbit -c --preset'
+alias C='pacman -Qs'
+alias RM='pacman -Rcsuv'
+alias up='pacman -Syu'
+alias v='cd /srv/http ; clear ; ls -ahl'

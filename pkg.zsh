@@ -1,0 +1,14 @@
+alias A="pkg search"
+alias AS="pkg rquery -U -i %e "
+alias CLEAN="pkg clean ; bleachbit.py -c --preset"
+alias a="pkg"
+alias aI="pkg install"
+alias ag="pkg upgrade"
+alias apd="pkg update -f"
+alias C="pkg info | grep -i"
+alias up="pkg update ; pkg safe-upgrade"
+alias v="cd /usr/local/www/apache24/data ; clear ; ls -ahl"
+alias li="ls -lFI"
+alias adg='freebsd-update fetch install ; portsnap fetch update'
+alias T='sysctl -a |grep temper'
+alias OFF="shutdown -p now"
