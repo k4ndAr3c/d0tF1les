@@ -1,0 +1,15 @@
+alias a='apt'
+alias A='apt search'
+alias adg='apt dist-upgrade'
+alias ag='apt upgrade'
+alias aI='apt install'
+alias apd='apt update'
+alias AS='apt show'
+alias AV='aptitude versions'
+alias UP="apt update ; apt upgrade ; apt dist-upgrade"
+alias up='aptitude update ; aptitude safe-upgrade'
+alias C='dpkg -l | grep -i'
+alias DCA='dpkg --configure -a'
+alias DFI='dpkg -i --force-overwrite '
+alias v='cd /var/www/html ; clear ; ls -ahl'
+alias bat="batcat"
