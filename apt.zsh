@@ -12,4 +12,5 @@ alias C='dpkg -l | grep -i'
 alias DCA='dpkg --configure -a'
 alias DFI='dpkg -i --force-overwrite '
 alias v='cd /var/www/html ; clear ; ls -ahl'
+alias alu='apt list --upgradable'
 alias bat="batcat"

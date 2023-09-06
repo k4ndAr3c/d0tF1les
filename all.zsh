@@ -27,7 +27,7 @@ alias ..='cd ..'
 alias chromium-browser='chromium-browser --user-data-dir=/root/.chromium-browser'
 alias cl='clear ; ls -hFl'
 alias CLEAN='bleachbit -c --preset'
-alias CleanCat2="egrep -v '^$|^#'"
+alias CleanCat2="grep -vE '^$|^#'"
 alias Cleancat='sed -e "/^$/d" -e "/^#/d"'
 alias ClWebPage="elinks -dump "
 alias cmatrix="cmatrix -ab"
@@ -39,15 +39,18 @@ alias decryptPubKey="openssl rsa -pubin -text -modulus -in"
 alias dfc='dfc -wiT'
 alias df='df -hT --exclude-type=tmpfs'
 alias DimJpg="convert -define jpeg:extent=500Kb"
-alias dla='du -sh $(ls -A) | sort -nr'
-alias dl='du -sh $(ls) | sort -nr'
-alias DL='ls -A| while read a ; do du -hs "$a" ;done| sort -nr'
+alias dla='du -sh $(ls -A) | sort -hr'
+alias dl='du -sh $(ls) | sort -hr'
+alias biggest='du -h --max-depth=1 |sort -h'
+alias DL='ls -A| while read a ; do du -hs "$a" ;done| sort -hr'
 alias du='du -h'
 alias E='exit'
 alias egrep='egrep --color=auto'
 alias f3doR="ssh 10.42.1.18"
 alias fact='elinks -dump randomfunfacts.com |grep -A7 ┌─────────────────────────|grep -v "^$"|grep -v "^\ "'
 alias fgrep='fgrep --color=auto'
+alias op='netstat -anpe --inet --inet6'
+alias rg='rg --sort path'
 alias FInd='find / -iname'
 alias findSUID='find / -user root -perm -4000 -print'
 alias fr33bsd="ssh 10.42.1.31"
@@ -60,19 +63,21 @@ alias -g G="|grep --color=auto"
 alias -g H='--help'
 alias -g L='|less'
 alias -g TL='|tail'
+alias -g J='|jq'
 alias GP='git pull'
 alias grep='grep --color=auto'
 alias GUp="GITs.py /pentest/PeNtEsT /root"
 alias h='cd /home/k4ndar3c/ ; clear'
 alias HEAders="wget -S --spider -O - "
-alias HEAvy='mount.nfs -v 10.42.1.12:/HEAvy /mnt/HEAvy'
+alias HEAvy='mount.nfs -v Knoppix:/HEAvy /mnt/HEAvy'
 alias hh='history | grep -i'
 alias history="fc -l 1 "
+alias homeip="curl -s clairemaindor.fr/cons |tail -n1 |awk '{print \$2}'"
 alias i='ifconfig'
 alias I='iwconfig'
 alias IpForward='echo 1 > /proc/sys/net/ipv4/ip_forward'
 alias IpForwardStop='echo 0 > /proc/sys/net/ipv4/ip_forward'
-alias IPv6='nmap -6 --script="*ipv6*" --script-args=newtargets'
+alias IPv6='nmap -6 --script="*ipv6*" --script-args=newtargets --top-ports 250 -T4'
 alias ircNewbieCon="echo '#newbiecontest' ; irssi -c irc.worldnet.net"
 alias ircRootMe="echo '#root-me' ; irssi -c irc.root-me.org"
 alias jaR0="ssh 10.42.1.10"
@@ -81,7 +86,7 @@ alias jNET='jnettop -x "not udp" -i $(ifconfig |grep flag|grep -v lo |cut -f1 -d
 alias jobs='jobs -l'
 alias K9='kill -9'
 alias kata="ssh 10.42.1.41"
-alias KillJob='kill -9 `jobs -l |awk "{print $3}"`'
+alias KillJob='kill -9 `jobs -l | cut -f4 -d" "`'
 alias K="k -h"
 alias Knoppix="ssh 10.42.1.12"
 alias la='ls -A'
@@ -90,7 +95,10 @@ alias ll='ls -ahlF'
 alias l='ls -lhF'
 alias lrs='ls -lahrS'
 alias lrt='ls -rtl'
-alias lsd='command ls --color=auto -a -l -h -d *(/)'
+alias lsdir='command ls --color=auto -a -l -h -d *(/)'
+alias tree='tree -CAFh --dirsfirst'
+alias treed='tree -CAFd'
+alias psa='ps faux'
 alias ls='ls --color=auto'
 alias m4k="ssh 10.42.1.13"
 alias Matriux="ssh 10.42.1.19"
@@ -118,7 +126,7 @@ alias nSTool="ssh 10.42.1.34"
 alias NT="arp-scan -l"
 alias OBJ="objdump -d -Mintel "
 alias OFF='shutdown -h -P now'
-alias p17Share="mount -v -t nfs 10.42.1.39:/home/k4ndar3c /mnt/p17"
+alias p17Share="mount -v -t nfs p17:/home/k4ndar3c /mnt/p17"
 alias p2s='systemctl stop postgresql'
 alias p2='systemctl start postgresql'
 alias pentoo='ssh 10.42.1.29'
@@ -133,12 +141,12 @@ alias px='proxychains'
 alias PYServer='python3 -m http.server'
 alias q5vi="ssh 10.42.1.15"
 alias R3d="ssh 10.42.1.16"
-alias R3P05='mount -v -t nfs 10.42.1.19:/M0un7po1nt/R3P05 /mnt/R3P05/'
+alias R3P05='mount -v -t nfs Matriux:/M0un7po1nt/R3P05 /mnt/R3P05/'
 alias rdesktop='rdesktop -k fr'
 alias RDwin='rdesktop -u Administrateur -p "W1Nserv-" 10.42.1.25 &'
-alias REvEIL='ssh matriux REvEIL'
 alias RG='iw reg get'
-alias rmpyc='rm -R __pycache__ *.pyc'
+alias rmpyc='rm -Rf __pycache__ ; rm *.pyc'
+alias rrmpyc='find . -type d -name __pycache__ -exec rm -frv {} \;'
 alias rm='rm -Iv'
 alias RS='iw reg set '
 alias rsyncAr='rsync --progress --archive -X -A -H -z'
@@ -161,9 +169,9 @@ alias Spike="ssh root@10.42.1.22"
 alias ssFAll="threadedSSH-paramiko.py StopServices;StopServices;clear"
 alias SSHD="vim /etc/ssh/sshd_config && systemctl restart ssh sshd"
 alias stealSshPass="strace -ff -p $(pidof sshd) -e read |& grep -F ', \"\f\0\0\0\'"
-alias STuff='mount.nfs -v 10.42.1.12:/STuff /mnt/STuff'
+alias STuff='mount.nfs -v Knoppix:/STuff /mnt/STuff'
 alias SV='svn update'
-alias T="sensors ; /root/bin/tempMon.py 1"
+alias T="sensors ; /root/bin/tempMon.py 1 ; echo ; hddstemp"
 alias t='time'
 alias UL="updatedb && locate "
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
@@ -173,11 +181,11 @@ alias urldecodepy='python3 -c "import sys, urllib.parse as up; print(up.unquote_
 alias urlencode='node -e "console.log(encodeURIComponent(process.argv[1]))"'
 alias urlencodepy='python3 -c "import sys, urllib.parse as up; print(up.quote_plus(sys.argv[1]))"'
 alias US="gtrans.py -d us"
-alias VIdz="egrep '(mp4|webm|flv|mkv|avi)'"
+alias VIdz="grep -Ei '(mp4|webm|flv|mkv|avi)'"
 alias viewCon="tail -F /proc/net/nf_conntrack | ccze -A"
 alias watch4="watch iptables -L -n -v"
 alias watch6="watch ip6tables -L -n -v"
-alias whichSong="ssh root@10.42.1.19 lsof -c vlc|grep Z1C|cut -d '/' -f4,5,6,7,8,9,10,11,12,13,14"
+alias whichSong="ssh root@10.42.1.17 lsof -c vlc|grep Z1C|cut -d '/' -f4,5,6,7,8,9,10,11,12,13,14"
 alias win12="rdesktop -k fr -u Administrator -p 'W1Nddos)' -g 1024x864 10.42.1.14 &"
 alias W="nmcli d wifi list"
 alias x='chmod a+x'
@@ -187,25 +195,28 @@ alias y0lo="ssh root@10.42.1.5"
 alias YT="youtube-dl -f18 "
 alias Y="youtube-dl "
 alias z120='date ; shutdown -h -P +120'
-alias Z1C='mount -v -t nfs 10.42.1.19:/Z1C /mnt/Z1C'
+alias Z1C='mount -v -t nfs xXx:/Z1C /mnt/Z1C'
 alias z45='date ; shutdown -h -P +45'
 alias z60='date ; shutdown -h -P +60'
 alias z90='date ; shutdown -h -P +90'
 alias Zapping="youtube-dl -f 18 https://www.youtube.com/channel/UCoRnHlbVByoYV6st5kPxOIQ/ --playlist-end=1"
 function Append0-9 { for i in $(cat $1) ; do seq -f $i%1.0f 0 9 ; done ; }
-function cC { for i in $(ls) ; do echo ; echo $i@@@@@@@ ; ccat $i || cat $i ; done ; }
 function CHROOT { mount $1 $2 ; mount -t proc /proc $2/proc ; mount -t sysfs /sys $2/sys ; mount -B /dev $2/dev ; mount -B /dev/pts $2/dev/pts ; chroot $2 ; }
 function CleanWebPage { curl -s $1 | html2text ; }
 function cryptPass { perl -e "print crypt(\"$1\", \"$2\")" ; }
-function d64 { echo -n $1 |base64 -d ; echo ; }
+function d64 { echo -n $1 |base64 -i -d ; echo ; }
+function ePo1 { echo -n $1 |iconv --to-code UTF-16LE |base64 -w0 ; echo ; }
+function ePo2 { echo -n $1 |iconv --to-code UTF16LE |base64 -w0 ; echo ; }
+function encPowershell { ePo1 $1 || ePo2 $1 ; }
+function d64url { echo -n $1 |sed 's/-/+/g' |sed 's/_/\//g' |base64 -d ; echo ; }
 function dHex { echo -n $1 | xxd -r ; echo ; }
 function GACP { git add --all && git commit -a -m $1 && git push -u origin $2 ; }
-function GMD5 { egrep -i $1 /pentest/PeNtEsT/pentestscr1pts/w0Rdl1stS/MD5s-resolv.lst ; }
+function GMD5 { grep -i $1 /pentest/PeNtEsT/pentestscr1pts/w0Rdl1stS/MD5s-resolv.lst ; }
 function hexMd5sum { echo -n $1 | xxd -r -p | md5sum ; }
 function live-clean { for i in {1..$1} ; do nmcli c delete "$2 $i" ; done ; }
 function LookAtGit { elinks "https://github.com/$1?tab=repositories" ; }
 function lsbTestAll { for i in mersenne log_gen identity fibonacci fermat eratosthenes_composite eratosthenes carmichael ackermann OEIS_A000217 Dead_Man_Walking syracuse ; do lsb-set reveal -i $1 -g $i ; done ; }
-function MakePlayList { if [ "x$2" "==" "x" ] ; then echo "Usage: <directory> <playlist>" ; else touch ./"$2" && find "$1" -print | egrep -ie '(\.mp3|\.wav|\.m4a|\.wma|\.ogg|\.mp4|\.mpc|\.mp4a|\.amr|\.mid|\.webm)'|sed 's/^/\"/g' |sed 's/$/\"/g'  >> "$2" ; echo ---DONE!--- ; fi ; }
+function MakePlayList { if [ "x$2" "==" "x" ] ; then echo "Usage: <directory> <playlist>" ; else touch ./"$2" && find "$1" -print | grep -iE '(\.mp3|\.wav|\.m4a|\.wma|\.ogg|\.mp4|\.mpc|\.mp4a|\.amr|\.mid|\.webm)'|sed 's/^/\"/g' |sed 's/$/\"/g'  >> "$2" ; echo ---DONE!--- ; fi ; }
 function makeShellCode2 { xxd -c 1 $1 | awk '{print "\\x"$2 }' |tr -d '\n' ; echo ; wc -c $1 ; }
 function makeShellCode { nb=0 ; for i in $(objdump -d $1|grep "^ "|cut -f2); do nb=$(($nb+1)) ; echo -n '\\x'$i ; done ; echo ; echo "len=$nb" ; }
 function meteo { curl -s http://wttr.in/$1 ; }
@@ -224,16 +235,18 @@ function RedirPort3 { iptables -t nat -I OUTPUT --src 0/0 --dst $3 -p tcp --dpor
 function RedirPort { iptables -t nat -A PREROUTING -i $3 -p tcp --dport $1 -j REDIRECT --to-port $2 ; }
 function ReVerse { python3 -c "print(''.join(reversed(\"$1\")))" ; }
 function shift51 { for i in {1..51} ; do shiftCipher3.py $1 $i ; done ; for i in {-1..-51} ; do shiftCipher3.py $1 $i ; done ; }
-function SshForAll { for i in $(arp-scan -l |grep -vi interface|grep 10\.42|grep -v \.100 |grep -v 1\.37 |cut -f 1) ;do echo $i ; ssh $i $* ; echo ;  done ; echo '10.42.2.1' ; ssh 10.42.2.1 $* ; echo ; }
+function SshForAll { for i in $(arp-scan -l |grep -vi interface|grep "10\.42"|grep -v "\.100" |grep -v "\.37" |grep -v "\.55"|cut -f 1) ;do echo $i ; ssh $i $* ; echo ;  done ; echo ; }
 function transfer { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi ; tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile ; echo ; rm -f $tmpfile; }
 function u64dec { python2 -c "import base64; print int(base64.b64decode('$1').encode('hex'),16)" ; }
 function updateSite { find $1 -name "index.html?*" -print -exec rm "{}" \; ; wget -r -l inf -nc $1 ; }
-function VirusTotal { python -c "import requests;print(requests.post('https://www.virustotal.com/en/search/', data={'query':'$1'}).content)" |egrep -i ('57 antivirus'|'File not found') ; }
-function WHILe { while sleep $1 ; do $2 $3 $4 $5 $6 $7 $8 $9 ; echo "*** $1 s" ; done ; }
+function upl04d { curl -X POST -F "fileToUp=@"$1 -F "submit=submit" http://www.clairemaindor.fr/myPers0w3bp4ge5/th1s-uplo4d/upp4g3.php && curl clairemaindor.fr/myPers0w3bp4ge5/th1s-uplo4d/upl04dl0g ; }
+function VirusTotal { python -c "import requests;print(requests.post('https://www.virustotal.com/en/search/', data={'query':'$1'}).content)" |grep -Ei ('57 antivirus'|'File not found') ; }
+function WHILe { eval "$2" ; echo "*** $1 s" ; while sleep $1 ; do eval "$2" ; echo "*** $1 s" ; done ; }
 alias III='mount N5Tool:/III /mnt/nstool'
 alias IV='mount N5Tool:/IV /mnt/nstoolIV'
 alias dwsLight="mount LiGhT:/DwS /mnt/other"
 alias cpr="rsync -ah --inplace --info=progress2"
+alias QuadNfs="mount -v Quad:/old_p17 /mnt/quad"
 alias Commando="ssh -p 7876 k4ndar3c@commando"
 alias tmuxAttach="tmux attach-session -t"
 alias wfuzz="wfuzz -c"
@@ -246,16 +259,29 @@ function DISASM64 { python3 -c "import pwn;print(pwn.disasm(b'$1', arch='amd64')
 function DISASM32 { python3 -c "import pwn;print(pwn.disasm(b'$1', arch='i386'))" ; }
 alias route4n3wb="ip route add 10.42.2.0/24 via 10.42.1.100"
 alias ShowEnabledServices="systemctl list-unit-files --state=enabled"
-alias radioStAff="mplayer -nocache -afm ffmpeg 'http://stream.radios-arra.fr:8000/stafrique'"
-alias radioLarzac="mplayer -nocache -afm ffmpeg 'http://stream.radiolarzac.org:8000/radiolarzac'"
+alias radioStAff="mplayer -afm ffmpeg 'https://www.radiosaintaffrique.com/en-direct'"
+alias radioLarzac="mplayer -afm ffmpeg 'http://stream.radiolarzac.org:8000/radiolarzac'"
 alias CBox="chatbox-rm.py en ; chatbox-rm.py fr"
+alias lsd="lsd -l"
 alias SongPos="VLC status | jq .root.position"
-alias wS2="VLC status|jq .root.information |egrep -A1 '(filename|artist|title|album)'"
-alias restart_zic="ssh k4ndAr3c@Matriux '/home/k4ndAr3c/bin/restart_zic.sh'"
+alias wS2="VLC status|jq .root.information |grep -EA1 '(filename|artist|title|album)'"
+alias t0="tmux attach-session -t 0"
+alias restart_zic="ssh k4ndar3c@xXx '/home/k4ndar3c/bin/restart_zic.sh'"
 function untinyurl { curl -v -I -L $1 2>&1 | grep -C3 Host ; }
 alias ip='ip --color=auto'
 alias TM="tempMon.py"
 function PatchELF { patchelf --set-interpreter $PWD/lib/ld-2.$2.so --replace-needed libc.so.6 $PWD/lib/libc.so.6 ./$1 ; }
-function stringsALL { for e in "s" "S" "l" "L" ; do strings -e $e $1 ; done ; }
-alias upGitsDir='for i in $(ls) ; do ls $i/.git 1>/dev/null 2>&1 ; if [ $? -eq 2 ] ; then cd $i ; GITs.py ; cd .. ; fi ; done'
+function stringsALL { for e in "s" "S" "b" "B" "l" "L" ; do strings -e $e -n "$2" "$1" ; done ; }
+alias upGitsDir='for i in $(ls) ; do ls $i/.git 1>/dev/null 2>&1 ; if [ $? -eq 0 ] ; then echo "@@@ $i" ; cd $i ; git pull ; cd .. ; fi ; done'
 alias c="bat"
+alias ipa='ip --brief --color a'
+alias ntpSetTime="ntpdate 1.fedora.pool.ntp.org"
+function cC { for i in $(ls) ; do echo ; echo $i@@@@@@@ ; c -pp $i ; done ; }
+function zlibdec { printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" | cat - "$1" | gzip -dc ; }
+function REvEIL { VLC s ; ssh xXx "at $1 < /home/k4ndar3c/bin/reveil" ; }
+function mkdCd { mkdir -p "$1" && cd "$1" ; }
+function mvLastDown { mv /home/k4ndar3c/Downloads/"`ls -rt /home/k4ndar3c/Downloads/|tail -n1`" "$1" ; }
+function fullScan { masscan $1 -p1-65535,U:1-65535 --rate=500 -e $2 --wait 5 -oL tcp_udp.$1.masscan --interactive ; }
+alias hddstemp='for i in $(df -hT --exclude-type=tmpfs G /dev/sd |cut -d" " -f1 |cut -c -8 |sort -u) ; do hddtemp $i || skdump --temperature $i ; done'
+alias so="~/bin/save_output.sh"
+alias myipv6="curl -6 ifconfig.co"

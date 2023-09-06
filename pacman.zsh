@@ -8,6 +8,6 @@ alias AURinstalled="pacman -Qqm"
 alias A='pacman -Ss'
 alias CLEAN='pacman -Scc; bleachbit -c --preset'
 alias C='pacman -Qs'
-alias RM='pacman -Rcsuv'
+alias RM='pacman -Rcsuvn'
 alias up='pacman -Syu'
 alias v='cd /srv/http ; clear ; ls -ahl'
