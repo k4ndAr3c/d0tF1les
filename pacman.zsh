@@ -11,3 +11,4 @@ alias C='pacman -Qs'
 alias RM='pacman -Rcsuvn'
 alias up='pacman -Syu'
 alias v='cd /srv/http ; clear ; ls -ahl'
+alias alu="pacman -Qu | awk '{print \$1}'"

@@ -22,7 +22,7 @@ function NT {
         }
         Write-Host "--------------------"
 }
-Function updateGits { Get-ChildItem -Directory | ForEach-Object {cd $_ ; git pull ; cd .. } }
+Function updateGits { Get-ChildItem -Directory | ForEach-Object {echo $_ ; cd $_ ; git pull ; cd .. } }
 Function nop { notepad $profile }
 Function vimh { vim C:\Windows\System32\drivers\etc\hosts }
 Function PYServer { 
@@ -53,15 +53,15 @@ Function rTmpVim { rm *~ }
 Function MyIp { Invoke-WebRequest http://ifconfig.me/ip }
 Function ccat {
 	C:\Python37\Scripts\pygmentize.exe @args }
-Function c {
+Function C {
 	param($soft)
-	choco list --local-only | findstr -i $soft }
+	choco list | findstr -i $soft }
 Function .. { cd .. }
 Function p($name) { Get-Process | sls $name }
 Function s { cd E:\PeNtEsT }
 Function CLEAN { 
-	D:\Liberkey\Apps\CCleaner\CCLeanerLKL.exe /auto
 	C:\"Program Files (x86)"\BleachBit\bleachbit_console.exe -c --preset }
+	D:\Liberkey\Apps\CCleaner\CCLeanerLKL.exe /auto
 Function d0wn5 {
 	New-PSDrive Z -PsProvider FileSystem -Root \\10.42.1.14\d0wn5 -Persist -Credential WIN-12\Administrator }
 Function python {
@@ -71,8 +71,7 @@ Function python3 {
 
 $LogCommandHealthEvent = $true
 $LogCommandLifecycleEvent = $true
-# Save last 200 history items on exit
-$MaximumHistoryCount = 200
+$MaximumHistoryCount = 1000
 $historyPath = Join-Path (split-path $profile) history.clixml
 Register-EngineEvent -SourceIdentifier powershell.exiting -SupportEvent -Action {
     Get-History -Count $MaximumHistoryCount | Export-Clixml (Join-Path (split-path $profile) history.clixml) }

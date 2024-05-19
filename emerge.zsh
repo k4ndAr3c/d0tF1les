@@ -1,12 +1,13 @@
 alias adg='time emerge --deep --newuse -vt --update @world'
 alias A='emerge --search'
 alias agSmooth='time emerge --update --ask --autounmask -v'
-alias ag='time emerge --nospinner --noreplace --oneshot --update'
+function ag { emerge -1aNDu $* || emerge -1aNu $* || emerge -1aN $* ; }
+function aggk { emerge -1aNDugk $* || emerge -1aNugk $* || emerge -1aNgk $* ; }
 alias aI='time emerge -a'
 alias AS="equery meta --description"
 alias a='time emerge'
 alias e='eselect '
-alias fadg='time emerge -vt --ask --update --newuse --deep --with-bdeps=y --backtrack=200 --keep-going'
+alias fadg='time emerge -vt --ask --update --newuse --deep --with-bdeps=y --backtrack=200 --keep-going -1'
 alias RM='time emerge -cav'
 alias upSys="time emerge -u1Dva --autounmask @system"
 alias TailEmergeLog='sudo tail -f /var/log/emerge-fetch.log'
@@ -41,6 +42,7 @@ alias n2s='/etc/init.d/nginx stop'
 alias NMStart="/etc/init.d/NetworkManager start"
 alias NMStop="/etc/init.d/NetworkManager stop"
 alias adg_pentoo='for i in pentoo/pentoo-analyzer pentoo/pentoo-bluetooth pentoo/pentoo-cracking pentoo/pentoo-database pentoo/pentoo-desktop pentoo/pentoo-exploit pentoo/pentoo-footprint pentoo/pentoo-forensics pentoo/pentoo-forging pentoo/pentoo-fuzzers pentoo/pentoo-misc pentoo/pentoo-mitm pentoo/pentoo-mobile pentoo/pentoo-nfc pentoo/pentoo-proxies pentoo/pentoo-radio pentoo/pentoo-rce pentoo/pentoo-scanner pentoo/pentoo-system pentoo/pentoo-voip pentoo/pentoo-wireless ; do echo $i@@@ ; UP17 -1 $i ; done'
-alias UP17='time emerge -vt --ask --update --newuse --deep --with-bdeps=y --backtrack=200 --keep-going --buildpkg=n -gk'
+alias UP17='time emerge -vt --ask --update --newuse --deep --with-bdeps=y --backtrack=200 --keep-going --buildpkg=n -gk -1'
 alias -g "NOBUILD"="--buildpkg=n -gk"
 alias updatePkg="emerge -1DNuav -a -vt"
+alias listDupPkgs="qlist -vI | awk 'sub(/-[0-9].*/, \"\")' | sort | uniq -c |sort -n |tail -n "

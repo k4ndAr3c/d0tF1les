@@ -26,7 +26,7 @@ alias ccat='pygmentize -O bg=dark'
 alias ..='cd ..'
 alias chromium-browser='chromium-browser --user-data-dir=/root/.chromium-browser'
 alias cl='clear ; ls -hFl'
-alias CLEAN='bleachbit -c --preset'
+alias CLEAN='bleachbit -c --preset ; pydf'
 alias CleanCat2="grep -vE '^$|^#'"
 alias Cleancat='sed -e "/^$/d" -e "/^#/d"'
 alias ClWebPage="elinks -dump "
@@ -66,7 +66,7 @@ alias -g TL='|tail'
 alias -g J='|jq'
 alias GP='git pull'
 alias grep='grep --color=auto'
-alias GUp="GITs.py /pentest/PeNtEsT /root"
+alias GUp="gitup /pentest/PeNtEsT /root"
 alias h='cd /home/k4ndar3c/ ; clear'
 alias HEAders="wget -S --spider -O - "
 alias HEAvy='mount.nfs -v Knoppix:/HEAvy /mnt/HEAvy'
@@ -108,7 +108,8 @@ alias msf='systemctl start postgresql && msfconsole'
 alias msieve='msieve -v'
 alias muS1x="ssh k4ndar3c@10.42.1.14"
 alias mv='mv -v'
-alias myip="curl -s ifconfig.me/ip ; echo"
+alias myip="curl -4 -s https://ifconfig.me/ip ; echo"
+alias myipv6="curl -6 -s https://ifconfig.me/ip ; echo"
 alias Mys='systemctl stop mysqld'
 alias My='systemctl start mysqld'
 alias n3th="ssh root@10.42.1.28"
@@ -259,9 +260,9 @@ function DISASM64 { python3 -c "import pwn;print(pwn.disasm(b'$1', arch='amd64')
 function DISASM32 { python3 -c "import pwn;print(pwn.disasm(b'$1', arch='i386'))" ; }
 alias route4n3wb="ip route add 10.42.2.0/24 via 10.42.1.100"
 alias ShowEnabledServices="systemctl list-unit-files --state=enabled"
-alias radioStAff="mplayer -afm ffmpeg 'https://www.radiosaintaffrique.com/en-direct'"
+alias radioStAff="mplayer -afm ffmpeg 'http://stream.radios-arra.fr:8000/stafrique'"
 alias radioLarzac="mplayer -afm ffmpeg 'http://stream.radiolarzac.org:8000/radiolarzac'"
-alias CBox="chatbox-rm.py en ; chatbox-rm.py fr"
+alias CBox="chatbox-rm.py en 3 ; chatbox-rm.py fr 3"
 alias lsd="lsd -l"
 alias SongPos="VLC status | jq .root.position"
 alias wS2="VLC status|jq .root.information |grep -EA1 '(filename|artist|title|album)'"
@@ -282,6 +283,15 @@ function REvEIL { VLC s ; ssh xXx "at $1 < /home/k4ndar3c/bin/reveil" ; }
 function mkdCd { mkdir -p "$1" && cd "$1" ; }
 function mvLastDown { mv /home/k4ndar3c/Downloads/"`ls -rt /home/k4ndar3c/Downloads/|tail -n1`" "$1" ; }
 function fullScan { masscan $1 -p1-65535,U:1-65535 --rate=500 -e $2 --wait 5 -oL tcp_udp.$1.masscan --interactive ; }
-alias hddstemp='for i in $(df -hT --exclude-type=tmpfs G /dev/sd |cut -d" " -f1 |cut -c -8 |sort -u) ; do hddtemp $i || skdump --temperature $i ; done'
+alias hddstemp='for i in $(df -hT --exclude-type=tmpfs |grep /dev/sd |cut -d" " -f1 |cut -c -8 |sort -u) ; do hddtemp $i || skdump --temperature $i ; done'
 alias so="~/bin/save_output.sh"
-alias myipv6="curl -6 ifconfig.co"
+alias yt-mp3='yt-dlp --extract-audio --audio-format mp3'
+alias checkImaginaryChalls="curl -s https://imaginaryctf.org/api/challenges/released | jq 'sort_by(.id)'"
+alias SSTIpayload="python -c \"print('\\x24\\x7b\\x7b\\x3c\\x25\\x5b\\x25\\x27\\x22\\x7d\\x7d\\x25\\x5c\\x2e')\""
+alias RMS="rootmeStepper.py k4ndar3c"
+function ExposeHTTPPort { ssh -R 80:localhost:$1 serveo.net ; }
+alias semgrep_scan="semgrep scan --metrics=off"
+alias docker_rm_all="docker system prune -a"
+alias rdp_comm_box='xfreerdp /v:comm_box /u:k4ndar3c /p:kanda +clipboard /dynamic-resolution /kbd:0x0000040C /kbd-lang:0x0000040C &'
+alias gef="gdb -n -x /root/.gdbinitgef"
+alias uh="unhex.py"
