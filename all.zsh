@@ -72,7 +72,6 @@ alias HEAders="wget -S --spider -O - "
 alias HEAvy='mount.nfs -v Knoppix:/HEAvy /mnt/HEAvy'
 alias hh='history | grep -i'
 alias history="fc -l 1 "
-alias homeip="curl -s clairemaindor.fr/cons |tail -n1 |awk '{print \$2}'"
 alias i='ifconfig'
 alias I='iwconfig'
 alias IpForward='echo 1 > /proc/sys/net/ipv4/ip_forward'
@@ -206,10 +205,12 @@ function CHROOT { mount $1 $2 ; mount -t proc /proc $2/proc ; mount -t sysfs /sy
 function CleanWebPage { curl -s $1 | html2text ; }
 function cryptPass { perl -e "print crypt(\"$1\", \"$2\")" ; }
 function d64 { echo -n $1 |base64 -i -d ; echo ; }
+function e64 { echo -n $1 |base64 -w 0 ; echo ; }
 function ePo1 { echo -n $1 |iconv --to-code UTF-16LE |base64 -w0 ; echo ; }
 function ePo2 { echo -n $1 |iconv --to-code UTF16LE |base64 -w0 ; echo ; }
 function encPowershell { ePo1 $1 || ePo2 $1 ; }
-function d64url { echo -n $1 |sed 's/-/+/g' |sed 's/_/\//g' |base64 -d ; echo ; }
+function d64url { echo -n $1 |sed 's/-/+/g' |sed 's/_/\//g' |base64 -d -i; echo ; }
+function e64url { echo -n $1 |sed 's/_/\//g' |sed 's/-/+/g' |base64 -w 0 ; echo ; }
 function dHex { echo -n $1 | xxd -r ; echo ; }
 function GACP { git add --all && git commit -a -m $1 && git push -u origin $2 ; }
 function GMD5 { grep -i $1 /pentest/PeNtEsT/pentestscr1pts/w0Rdl1stS/MD5s-resolv.lst ; }
@@ -240,7 +241,6 @@ function SshForAll { for i in $(arp-scan -l |grep -vi interface|grep "10\.42"|gr
 function transfer { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi ; tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile ; echo ; rm -f $tmpfile; }
 function u64dec { python2 -c "import base64; print int(base64.b64decode('$1').encode('hex'),16)" ; }
 function updateSite { find $1 -name "index.html?*" -print -exec rm "{}" \; ; wget -r -l inf -nc $1 ; }
-function upl04d { curl -X POST -F "fileToUp=@"$1 -F "submit=submit" http://www.clairemaindor.fr/myPers0w3bp4ge5/th1s-uplo4d/upp4g3.php && curl clairemaindor.fr/myPers0w3bp4ge5/th1s-uplo4d/upl04dl0g ; }
 function VirusTotal { python -c "import requests;print(requests.post('https://www.virustotal.com/en/search/', data={'query':'$1'}).content)" |grep -Ei ('57 antivirus'|'File not found') ; }
 function WHILe { eval "$2" ; echo "*** $1 s" ; while sleep $1 ; do eval "$2" ; echo "*** $1 s" ; done ; }
 alias III='mount N5Tool:/III /mnt/nstool'
@@ -295,3 +295,7 @@ alias docker_rm_all="docker system prune -a"
 alias rdp_comm_box='xfreerdp /v:comm_box /u:k4ndar3c /p:kanda +clipboard /dynamic-resolution /kbd:0x0000040C /kbd-lang:0x0000040C &'
 alias gef="gdb -n -x /root/.gdbinitgef"
 alias uh="unhex.py"
+alias vpx="vim /etc/proxychains.conf"
+alias cheat='f(){ curl -s "cheat.sh/$1";  unset -f f; }; f'
+alias Fuz='ffuf -mc all -t 2 -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"'
+alias dockit='docker run --rm -it -v "$PWD":/host -w /host --net=host'
