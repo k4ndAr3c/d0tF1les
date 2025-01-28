@@ -193,6 +193,7 @@ if [ -f /FILES/GITs/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     # change suggestion color
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
+source /FILES/GITs/zsh-fzf-history-search/zsh-fzf-history-search.zsh
 
 PATH=~/bin:~/.local/bin:$PATH
 

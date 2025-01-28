@@ -51,7 +51,7 @@ fun! TogglePasteMode()
     else
         let s:old_pastemode = "0"
         set nonumber
-        set norelativenumber
+        " set norelativenumber
         set paste
 
         let s:old_pastemouse = &mouse
