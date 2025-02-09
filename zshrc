@@ -38,8 +38,8 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab
 
 # History configurations
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=2000
+HISTSIZE=15000
+SAVEHIST=15000
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
@@ -199,18 +199,25 @@ PATH=~/bin:~/.local/bin:$PATH
 
 alias bugtraq="ssh bugtraq@bugtraq"
 alias rp17="ssh root@p17"
+alias rQ="ssh root@Quad"
 alias chuck='fortune -a /root/.oh-my-zsh/plugins/chucknorris/fortunes'
 alias phone="ssh -l u0_a259 -p8022 10.42.1.139"
+alias vim="nvim"
+alias imhex="/home/k4ndar3c/Downloads/imhex*.AppImage"
+alias cat='bat -pp --theme OneHalfDark'
 
-alias VM_kali="VMcontrol.py start e4726dd3-6ae3-4e12-82b3-534cfd093541"
-alias VM_blackarch="VMcontrol.py start b74b73bf-3a03-482e-9ea6-19a90accb825"
-alias VM_commando="VMcontrol.py start 9c16dd11-9e06-4322-b94c-8d35e72c25fa"
-alias VM_bb5="VMcontrol.py start 0789e524-fe52-4afd-90b6-422e0890d410"
+alias VM_kali="VMcontrol.py start -i e4726dd3-6ae3-4e12-82b3-534cfd093541"
+alias VM_blackarch="VMcontrol.py start -i b74b73bf-3a03-482e-9ea6-19a90accb825"
+alias VM_commando="VMcontrol.py start -i 9c16dd11-9e06-4322-b94c-8d35e72c25fa -S"
+alias VM_bb5="VMcontrol.py start -i 0789e524-fe52-4afd-90b6-422e0890d410 -S"
 
 alias youtube-dl="yt-dlp"
+alias curl="http --verify=False -s lightbulb"
+alias html2text="pyhtml2text --decode-errors=ignore"
 
 alias GDS="git diff --stat"
 alias GB="git branch"
 alias GCO="git checkout"
 alias GPO="git push -u origin"
 
+eval "$(zoxide init zsh --cmd cd)"
